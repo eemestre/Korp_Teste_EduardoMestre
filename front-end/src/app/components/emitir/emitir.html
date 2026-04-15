@@ -1,0 +1,22 @@
+<div>
+  <h2>Produtos</h2>
+
+  <ul>
+    <li *ngFor="let p of produtos; let i = index">
+      <span> {{ p.descricao }} (Saldo: {{ p.saldo }}) </span>
+
+      <input
+        type="number"
+        min="0"
+        [value]="quantidades[i] || 0"
+        (input)="setQuantidade($event, i)"
+      />
+    </li>
+  </ul>
+
+  <button (click)="enviarNota()">Comprar</button>
+
+  <p *ngIf="loading">Carregando...</p>
+  <p *ngIf="erro">Erro ao processar</p>
+  <p *ngIf="sucesso">Compra realizada com sucesso</p>
+</div>
